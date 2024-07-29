@@ -9,6 +9,9 @@ let img;
 let imgBolaFutebol;
 let placarJogador = 0;
 let placarComputador = 0;
+let pausado = false;
+let tempoDePausa = 3000;
+let tempoDeReinicio;
 
 function preload() {
   img = loadImage('https://picsum.photos/800/400/?random');
@@ -25,6 +28,16 @@ function setup() {
 function draw() {
   background(img);
   desenharBordas();
+  mostrarPlacar();
+
+  if (pausado) {
+    if (millis() - tempoDeReinicio >= tempoDePausa) {
+      pausado = false;
+      bola.reiniciar();
+    } else {
+      return;
+    }
+  }
 
   bola.atualizar();
   bola.mostrar();
@@ -43,6 +56,13 @@ function desenharBordas() {
   fill(corBorda);
   rect(0, 0, width, alturaBorda); // Borda superior
   rect(0, height - alturaBorda, width, alturaBorda); // Borda inferior
+}
+
+function mostrarPlacar() {
+  fill(255);
+  textSize(32);
+  textAlign(CENTER, CENTER);
+  text(`Jogador: ${placarJogador}  Computador: ${placarComputador}`, width / 2, 50);
 }
 
 class Bola {
@@ -71,11 +91,13 @@ class Bola {
     if (this.x < 0) {
       placarComputador++;
       narrarPlacar();
-      this.reiniciar();
+      pausado = true;
+      tempoDeReinicio = millis();
     } else if (this.x > width) {
       placarJogador++;
       narrarPlacar();
-      this.reiniciar();
+      pausado = true;
+      tempoDeReinicio = millis();
     }
   }
 
