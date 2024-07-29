@@ -48,7 +48,7 @@ Este projeto foi desenvolvido durante o curso "ChatGPT e JavaScript: construa o 
 
 O jogo desenvolvido foi implantado na plataforma Vercel e está disponível no seguinte endereço:
 
-[https://jogo-do-pong-gmmzlhkq0-alan-nunes-projects.vercel.app](https://jogo-do-pong-gmmzlhkq0-alan-nunes-projects.vercel.app)
+[https://jogo-do-pong-alan-nunes-projects.vercel.app/](https://jogo-do-pong-alan-nunes-projects.vercel.app/)
 
 ## Como Executar o Projeto Localmente
 
